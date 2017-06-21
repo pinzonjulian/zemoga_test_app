@@ -4,8 +4,11 @@
   height: 10rem
   width: 10rem
   border-radius: 50%
-  border: 2px solid lighgray
+  border: 0.25rem solid $success-color
   margin-bottom: 1rem
+  transition: all 0.175s ease
+  &:hover
+    +box-shadow-depth(1)
 
 .profile__name
   font:
