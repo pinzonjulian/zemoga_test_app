@@ -3,4 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+
+  def profile_info_is_complete?
+    name.present? && last_name.present? && description.present? && twitter_handle.present?
+  end
 end
