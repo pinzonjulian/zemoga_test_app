@@ -19,6 +19,7 @@ gem 'jquery'
 gem 'foundation-rails'
 
 gem 'carrierwave', '~> 1.0'
+gem "mini_magick"
 
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
@@ -42,7 +43,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'bullet'
-  gem "better_errors"
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 

@@ -1,0 +1,11 @@
+
+.row
+  .small-12.medium-8.large-6.columns.small-centered
+    h1 Edit your profile
+    = form_for @user, html: { multipart: true } do |f|
+      = f.text_field :name, placeholder: 'Name', required: true
+      = f.text_field :last_name, placeholder: 'Last Name', required: true
+      = f.text_field :twitter_handle, placeholder: 'Twitter Handle', required: true
+      = f.text_area :description, placeholder: 'Description', required: true
+      = f.file_field :avatar, required: true
+      = f.submit 'Save', class: 'button hollow'

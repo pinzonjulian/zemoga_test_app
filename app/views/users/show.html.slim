@@ -1,1 +1,12 @@
-h1 show!
+.row
+  .small-12.medium-4.columns
+    .card.text-center
+      = link_to edit_user_path(@user) do
+        = image_tag @user.avatar_url, class: 'profile__avatar'
+      h1.profile__name = @user.full_name
+    
+    .card
+  .small-12.medium-8.columns
+    .card
+      h2.profile__title My work experience
+      p = @user.description

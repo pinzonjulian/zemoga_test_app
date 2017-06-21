@@ -11,6 +11,12 @@
  * It is generally better to create a new file per style scope.
  *
  *= require normalize-rails
- *= require_tree .
- *= require_self
+
  */
+@import '0_tools/foundation_and_overrides';
+@import '0_tools/settings';
+@import '0_tools/mixins';
+
+@import "1_base/layout";
+@import "2_components/cards";
+@import "2_components/profile";

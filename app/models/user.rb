@@ -6,7 +6,13 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  def full_name
+    "#{name} #{last_name}"
+  end
+
+
   def profile_info_is_complete?
     name.present? && last_name.present? && description.present? && twitter_handle.present?
   end
+
 end
