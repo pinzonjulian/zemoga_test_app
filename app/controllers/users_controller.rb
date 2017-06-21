@@ -3,16 +3,19 @@ class UsersController < ApplicationController
   skip_before_action :check_if_user_profile_is_complete, only: [:edit, :update]
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = current_user
     @tweets = $twitter_client.user_timeline(@user.twitter_handle, {count: 5})
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
+    # @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
       flash[:notice] = 'User updated!'
       redirect_to user_path(@user)
