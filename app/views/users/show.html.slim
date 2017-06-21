@@ -5,7 +5,11 @@
         = image_tag @user.avatar_url, class: 'profile__avatar'
       h1.profile__name = @user.full_name
     
-    .card
+    .profile__twitter-title Latest Tweets
+    - @tweets.each do |t|
+      = link_to "#{t.uri}", target: '_blank' do
+        .card
+          = t.text
   .small-12.medium-8.columns
     .card
       h2.profile__title My work experience

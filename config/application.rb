@@ -14,5 +14,13 @@ module ZemogaTestApp
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    $twitter_client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ZemogaTestApp::Application.secrets[:CONSUMER_KEY]  #"YOUR_CONSUMER_KEY"
+      config.consumer_secret     = ZemogaTestApp::Application.secrets[:CONSUMER_SECRET]  #"YOUR_CONSUMER_SECRET"
+      config.access_token        = ZemogaTestApp::Application.secrets[:ACCESS_TOKEN]  #"YOUR_ACCESS_TOKEN"
+      config.access_token_secret = ZemogaTestApp::Application.secrets[:ACCESS_SECRET]  #"YOUR_ACCESS_SECRET"
+    end
+
   end
 end

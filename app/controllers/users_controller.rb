@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @tweets = $twitter_client.user_timeline(@user.twitter_handle, {count: 5})
   end
 
   def edit
