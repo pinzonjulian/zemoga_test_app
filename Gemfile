@@ -21,6 +21,8 @@ gem 'foundation-rails'
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
 
+gem 'twitter'
+
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
