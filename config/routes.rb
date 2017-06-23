@@ -1,7 +1,13 @@
+require 'api_constraints'
+
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/rails_admin', as: 'rails_admin'
-  # devise_for :admins
-  # devise_for :users
+
+  namespace :zemoga_portfolio_api, defaults: { format: 'json'} do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      get 'user_info/:id', to: 'users#user_info'
+    end
+  end
 
   devise_for :users, path: 'users', controllers: {sessions: 'users/sessions', registrations: 'users/registrations'}
   devise_for :admin, path: 'admins', controllers: {sessions: 'admins/sessions', registrations: 'admins/registrations'}
