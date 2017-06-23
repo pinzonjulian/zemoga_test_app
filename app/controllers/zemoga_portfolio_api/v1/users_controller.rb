@@ -1,9 +1,42 @@
 class ZemogaPortfolioApi::V1::UsersController < ApplicationController
 
+  skip_before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token, only: [:modify_user_info]
+  before_action :authenticate, except: [:user_info]
+
   def user_info
     @user = User.find(params[:id])
-    # respond_to do |format|
-    #   format.json { render json: @user }
-    # end
+  end
+
+  def modify_user_info
+    @user = User.find(params[:id])
+
+    if @user.blank?
+      head :no_content
+      return
+    elsif @user.update(user_info_params)
+      head :ok
+    else
+      head :method_not_allowed
+    end
+
+  end
+
+  private
+  def user_info_params
+    params.require(:user).permit(:id, :name, :last_name, :description, :twitter_handle, :avatar)
+  end
+
+  def authenticate
+    authenticate_or_request_with_http_token do |token, options|
+      # Compare the tokens in a time-constant manner, to mitigate
+      # timing attacks.
+      # user_token = User.find(params[:id]).api_key.token
+      # ActiveSupport::SecurityUtils.secure_compare(
+      #   ::Digest::SHA256.hexdigest(token),
+      #   ::Digest::SHA256.hexdigest(user_token)
+      # )
+      ApiKey.exists?(token: token, user_id: params[:id])
+    end
   end
 end

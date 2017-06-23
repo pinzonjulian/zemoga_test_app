@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :zemoga_portfolio_api, defaults: { format: 'json'} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       get 'user_info/:id', to: 'users#user_info'
+      patch 'modify_user_info/:id', to: 'users#modify_user_info'
     end
   end
 
