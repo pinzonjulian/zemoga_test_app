@@ -11,7 +11,21 @@ html lang="en"
     = csrf_meta_tag
 
   body
-    .main-contianer
-      p.notice = notice
-      p.alert = alert
-      = yield
+    .top-bar
+      .top-bar-left
+        .menu-text 
+          = link_to authenticated_user_root_path do
+            | ZemogaProfiles
+      .top-bar-right
+        ul.menu
+          - if user_signed_in?
+            li = link_to('Logout', destroy_user_session_path, method: :delete)
+          - else
+            li = link_to('Login', new_user_session_path)
+    
+    - flash.each do |key, value|
+      .alert-box class="#{foundation_flash_class(key)}"  data-alert=""
+        = value
+        a.close href="#" &times;
+    
+    = yield

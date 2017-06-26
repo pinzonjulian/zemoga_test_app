@@ -1,16 +1,20 @@
 .row
-  .small-12.medium-4.columns
+  .small-12.medium-6.large-4.columns
     .card.text-center
-      = link_to edit_user_path(@user) do
-        = image_tag @user.avatar_url, class: 'profile__avatar'
-      h1.profile__name = @user.full_name
+      - if current_user.id == params[:id].to_i
+        = link_to edit_user_path(@user) do
+          = image_tag @user.avatar.url, class: 'profile__avatar' if @user.avatar.present?
+          h1.profile__name = @user.full_name
+      - else
+        = image_tag @user.avatar.url, class: 'profile__avatar' if @user.avatar.present?
+        h1.profile__name = @user.full_name
     
     .profile__twitter-title Latest Tweets
     - @tweets.each do |t|
       = link_to "#{t.uri}", target: '_blank' do
         .card
           = t.text
-  .small-12.medium-8.columns
+  .small-12.medium-6.large-8.columns
     .card
       h2.profile__title My work experience
       p = @user.description

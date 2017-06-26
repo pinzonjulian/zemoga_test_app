@@ -1,5 +1,6 @@
 class Admins::SessionsController < Devise::SessionsController
   include Accessible
+  before_action :redirect_if_user
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
