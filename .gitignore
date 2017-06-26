@@ -24,3 +24,4 @@
 
 # Ignore encrypted secrets key file.
 config/secrets.yml.key
+/.secrets_setup_output.md
