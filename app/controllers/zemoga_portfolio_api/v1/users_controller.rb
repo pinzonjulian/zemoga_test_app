@@ -10,7 +10,6 @@ class ZemogaPortfolioApi::V1::UsersController < ApplicationController
 
   def modify_user_info
     @user = User.find(params[:id])
-    byebug
     if @user.blank?
       head :no_content
     elsif @user.update(user_info_params)
