@@ -3,10 +3,10 @@
     .card.text-center
       - if current_user.id == params[:id].to_i
         = link_to edit_user_path(@user) do
-          = image_tag @user.avatar.url, class: 'profile__avatar' if @user.avatar.present?
+          = image_tag @user.avatar.url, class: 'profile__avatar' if @user.avatar.url.present?
           h1.profile__name = @user.full_name
       - else
-        = image_tag @user.avatar.url, class: 'profile__avatar' if @user.avatar.present?
+        = image_tag @user.avatar.url, class: 'profile__avatar' if @user.avatar.url.present?
         h1.profile__name = @user.full_name
     
     .profile__twitter-title Latest Tweets
