@@ -7,6 +7,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :create_api_key
+
   mount_uploader :avatar, AvatarUploader
 
   def full_name
@@ -21,9 +23,14 @@ class User < ApplicationRecord
     role == 'standard_user'
   end
 
-
   def profile_info_is_complete?
     name.present? && last_name.present? && description.present? && twitter_handle.present?
+  end
+
+  private
+
+  def create_api_key
+    create_api_key
   end
 
 end
