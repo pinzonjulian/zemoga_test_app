@@ -23,7 +23,7 @@ gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
 
 gem 'twitter'
-# gem "active_model_serializers", github: "rails-api/active_model_serializers"
+gem "fog-aws"
 
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
