@@ -23,7 +23,6 @@ gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
 
 gem 'twitter'
-gem 'fog'
 gem "fog-aws"
 
 gem 'uglifier', '>= 1.3.0'
