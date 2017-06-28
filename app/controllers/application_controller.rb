@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :check_if_user_profile_is_complete
 
   def after_sign_in_path_for(resource)
-    byebug
     if resource.is_a?(User)
       authenticated_user_root_path
     elsif resource.is_a?(Admin)
