@@ -7,7 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  after_create :create_api_key
+  after_create :generate_api_key
 
   mount_uploader :avatar, AvatarUploader
 
@@ -29,7 +29,7 @@ class User < ApplicationRecord
 
   private
 
-  def create_api_key
+  def generate_api_key
     create_api_key
   end
 
